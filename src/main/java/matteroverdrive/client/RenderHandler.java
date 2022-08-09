@@ -247,29 +247,30 @@ public class RenderHandler {
         //GL11.glEnable(GL11.GL_LIGHTING);
         //GL11.glColor3f(1, 1, 1);
 
-        AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(event.getEntity());
-        if (androidPlayer != null && androidPlayer.isAndroid() && !event.getEntity().isInvisible()) {
-			//System.out.println("Is android");
-            for (int i = 0; i < 5; i++) {
-                ItemStack part = androidPlayer.getStackInSlot(i);
-				//System.out.println(androidPlayer.getStackInSlot(i));
-                if (part != null && part.getItem() instanceof IBionicPart) {
-                    IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
-					//System.out.println(renderer);
-                    if (renderer != null) {
-                        try {
-							System.out.println("trying to render");
-                            GlStateManager.pushMatrix();
-                            GlStateManager.enableBlend();
-                            renderer.renderPart(part, androidPlayer, event.getRenderer(), event.getPartialRenderTick());
-                            GlStateManager.popMatrix();
-                        } catch (Exception e) {
-                            MOLog.log(Level.ERROR, e, "An Error occurred while rendering bionic part");
-                        }
-                    }
-                }
-            }
-        }
+		// XZ/RSC/CLDN//T08082022 Do not override player skins with android components
+        // AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(event.getEntity());
+        // if (androidPlayer != null && androidPlayer.isAndroid() && !event.getEntity().isInvisible()) {
+		// 	//System.out.println("Is android");
+        //     for (int i = 0; i < 5; i++) {
+        //         ItemStack part = androidPlayer.getStackInSlot(i);
+		// 		//System.out.println(androidPlayer.getStackInSlot(i));
+        //         if (part != null && part.getItem() instanceof IBionicPart) {
+        //             IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
+		// 			//System.out.println(renderer);
+        //             if (renderer != null) {
+        //                 try {
+		// 					System.out.println("trying to render");
+        //                     GlStateManager.pushMatrix();
+        //                     GlStateManager.enableBlend();
+        //                     renderer.renderPart(part, androidPlayer, event.getRenderer(), event.getPartialRenderTick());
+        //                     GlStateManager.popMatrix();
+        //                 } catch (Exception e) {
+        //                     MOLog.log(Level.ERROR, e, "An Error occurred while rendering bionic part");
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
  
     @SubscribeEvent
@@ -277,18 +278,19 @@ public class RenderHandler {
         //GL11.glEnable(GL11.GL_LIGHTING);
         //GL11.glColor3f(1, 1, 1);
 
-        AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(event.getEntity());
-        if (androidPlayer != null && androidPlayer.isAndroid() && !event.getEntity().isInvisible()) {
-            for (int i = 0; i < 5; i++) {
-                ItemStack part = androidPlayer.getStackInSlot(i);
-                if (part != null && part.getItem() instanceof IBionicPart) {
-                    IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
-                    if (renderer != null) {
-                        renderer.affectPlayerRenderer(part, androidPlayer, event.getRenderer(), event.getPartialRenderTick());
-                    }
-                }
-            }
-        }
+		// XZ/RSC/CLDN//T08082022 Do not override player skins with android components
+        // AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(event.getEntity());
+        // if (androidPlayer != null && androidPlayer.isAndroid() && !event.getEntity().isInvisible()) {
+        //     for (int i = 0; i < 5; i++) {
+        //         ItemStack part = androidPlayer.getStackInSlot(i);
+        //         if (part != null && part.getItem() instanceof IBionicPart) {
+        //             IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
+        //             if (renderer != null) {
+        //                 renderer.affectPlayerRenderer(part, androidPlayer, event.getRenderer(), event.getPartialRenderTick());
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     @SubscribeEvent
@@ -448,7 +450,7 @@ public class RenderHandler {
             }
         }, Item.getItemFromBlock(MatterOverdrive.BLOCKS.decorative_floor_tiles));
         FMLClientHandler.instance().getClient().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-            if (tintIndex == 1 && stack.getItemDamage() == 0) return 0xd00000;
+            if (tintIndex == 1 && stack.getItemDamage() == 0) return 0x07fffe;
             else if (tintIndex == 1 && stack.getItemDamage() == 1) return 0x019fea;
             else if (tintIndex == 1 && stack.getItemDamage() == 2) return 0xffe400;
             return 0xffffff;

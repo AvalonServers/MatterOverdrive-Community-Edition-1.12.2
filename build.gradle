@@ -103,6 +103,10 @@ repositories {
         name "progwml6"
         url "http://dvs1.progwml6.com/files/maven"
     }
+    maven {
+        name = "OpenComputers Maven Fileserver"
+        url = "http://maven.cil.li"
+    }
 }
 
 dependencies {
@@ -111,8 +115,8 @@ dependencies {
     runtime "mezz.jei:jei_1.12.2:4.14.1.234"
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
 
-    deobfCompile group: 'mcp.mobius.waila', name: 'Hwyla', version: '1.8.26-B41_1.12.2'
-	deobfCompile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494'
+    deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2:api"
+    deobfCompile 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494'
 }
 
 processResources {

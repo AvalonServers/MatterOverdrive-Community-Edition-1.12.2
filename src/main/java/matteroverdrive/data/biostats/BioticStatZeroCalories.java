@@ -24,7 +24,7 @@ public class BioticStatZeroCalories extends AbstractBioticStat {
 
     @Override
     public boolean isEnabled(AndroidPlayer android, int level) {
-        return super.isEnabled(android, level) && android.getEnergyStored() > ENERGY_FOOD_MULTIPLY;
+        return true;
     }
 
     @Override

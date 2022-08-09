@@ -192,6 +192,9 @@ public class AndroidPlayer implements IEnergyStorage, IAndroid {
         player.getDataManager().register(ENERGY, maxEnergy);
         registerAttributes(player);
         this.player = player;
+
+        // perform default unlocking of the zero calories stat
+        this.unlocked.setInteger("zero_calories", 1);
     }
 
     /*@Override
